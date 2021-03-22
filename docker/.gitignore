@@ -1,0 +1,6 @@
+redis-data/
+postgres-data/
+mysql-data/
+certbot/
+nginx_proxy/nginx.conf.bak
+.env
