@@ -43,6 +43,9 @@ before_script:
   # - php artisan db:seed
   # - php artisan passport:keys
 
+  # Clear config cache:
+  - php artisan config:clear
+
 unit_tests:
   script:
     - php artisan test --parallel --testsuite=Unit
