@@ -53,10 +53,6 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(function () {
 
-                    Route::prefix('public')
-                        ->namespace('PublicControllers')
-                        ->group($this->basePath . 'public.php');
-
                     Route::prefix('ping')
                         ->group($this->basePath . 'ping.php');
 
