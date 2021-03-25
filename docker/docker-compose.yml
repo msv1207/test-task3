@@ -27,7 +27,7 @@ services:
     working_dir: /application
     volumes:
       - ../:/application
-      - ../docker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+      - ../docker/php-fpm/php-ini-overrides.ini:/etc/php/8.0/fpm/conf.d/99-overrides.ini
     networks:
       - backend
     links:
@@ -106,7 +106,7 @@ services:
     working_dir: /application
     volumes:
       - ../:/application
-      - ../docker/php_cli/php-ini-overrides.ini:/etc/php/7.4/cli/conf.d/99-overrides.ini
+      - ../docker/php_cli/php-ini-overrides.ini:/etc/php/8.0/cli/conf.d/99-overrides.ini
     command: [ "php", "artisan", "queue:listen", "--delay=0", "--tries=3" ]
     networks:
       - backend
@@ -123,4 +123,5 @@ networks:
 
 volumes:
   postgres:
+#  mysql:
   redis:
