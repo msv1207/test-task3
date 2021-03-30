@@ -6,7 +6,6 @@ services:
     build:
       context: ../
       dockerfile: docker/nginx/Dockerfile
-    container_name: ${PROJECT_NAME}-webserver
     restart: unless-stopped
     working_dir: /application
     volumes:
@@ -22,7 +21,6 @@ services:
     build:
       context: ../
       dockerfile: docker/php-fpm/Dockerfile
-    container_name: ${PROJECT_NAME}-php-fpm
     restart: unless-stopped
     working_dir: /application
     volumes:
@@ -36,7 +34,6 @@ services:
 
   redis:
     image: redis:alpine
-    container_name: ${PROJECT_NAME}-redis
     restart: unless-stopped
     working_dir: /application
     volumes:
@@ -49,7 +46,6 @@ services:
 
   postgres:
     image: postgres:13.2
-    container_name: ${PROJECT_NAME}-postgres
     working_dir: /application
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
@@ -67,7 +63,6 @@ services:
 
 #  mysql:
 #    image: mysql:8.0.23
-#    container_name: ${PROJECT_NAME}-mysql
 #    working_dir: /application
 #    restart: unless-stopped
 #    volumes:
@@ -85,7 +80,6 @@ services:
     build:
       context: ../
       dockerfile: docker/php_cron/Dockerfile
-    container_name: ${PROJECT_NAME}-cron
     working_dir: /application
     restart: unless-stopped
     volumes:
@@ -101,7 +95,6 @@ services:
     build:
       context: ../
       dockerfile: docker/php-fpm/Dockerfile
-    container_name: ${PROJECT_NAME}-queue-worker
     restart: unless-stopped
     working_dir: /application
     volumes:
@@ -117,7 +110,7 @@ services:
 
 networks:
   backend:
-    name: ${PROJECT_NAME}_network
+    name: ${COMPOSE_PROJECT_NAME}_network
     driver: bridge
 
 
