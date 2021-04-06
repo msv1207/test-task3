@@ -26,8 +26,7 @@ init:
 
 	docker-compose exec php-fpm php artisan optimize
 
-	docker-compose exec php-fpm php artisan migrate
-    docker-compose exec php-fpm php artisan db:seed
+	docker-compose exec php-fpm php artisan migrate --seed
 
     docker-compose exec php-fpm php artisan storage:link
 
@@ -68,8 +67,7 @@ build:
 
 	docker-compose exec php-fpm php artisan optimize
 
-	docker-compose exec php-fpm php artisan migrate
-	docker-compose exec php-fpm php artisan db:seed
+	docker-compose exec php-fpm php artisan migrate --seed
 
     docker-compose exec php-fpm php artisan storage:link
 
