@@ -7,9 +7,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Base project
+## Test project
 
-### include requirements:
+### Include requirements:
 
 - [JWT-Auth](https://github.com/tymondesigns/jwt-auth).
 - [Sentry](https://docs.sentry.io/platforms/php/guides/laravel/).
@@ -21,6 +21,13 @@
 - [Telescope](https://laravel.com/docs/8.x/telescope).
 - [PhpMetrics](https://github.com/phpmetrics/PhpMetrics).
 - [Laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper).
+
+## Set Up
+- Install [Make](https://ealebed.github.io/posts/2017/%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-make-%D0%B4%D0%BB%D1%8F-%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-docker-%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D0%B0%D0%BC%D0%B8/) utility
+- Run `cd docker`.
+- Run `cp .env.example .env`.
+- Run  `make install` to up the project.
+
 
 ## About Laravel
 

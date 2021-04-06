@@ -61,21 +61,6 @@ services:
       - backend
 
 
-#  mysql:
-#    image: mysql:8.0.23
-#    working_dir: /application
-#    restart: unless-stopped
-#    volumes:
-#      - ./mysql-data:/var/lib/mysql
-#      - ../:/application
-#    environment:
-#      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-#      - MYSQL_DATABASE=${MYSQL_DATABASE}
-#      - MYSQL_USER=${MYSQL_USER}
-#      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-#    ports:
-#      - ${MYSQL_PORT}:3306
-
   cron:
     build:
       context: ../
@@ -116,5 +101,4 @@ networks:
 
 volumes:
   postgres:
-#  mysql:
   redis:
