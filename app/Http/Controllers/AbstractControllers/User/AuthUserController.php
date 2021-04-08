@@ -20,4 +20,9 @@ abstract class AuthUserController extends Controller
             return $next($request);
         });
     }
+
+    protected function getStorageBasePath(): string
+    {
+        return "users/{$this->authUser->id}";
+    }
 }

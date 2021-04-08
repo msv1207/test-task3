@@ -66,7 +66,7 @@ class RouteServiceProvider extends ServiceProvider
 
                     Route::prefix('user')
                         ->namespace('User')
-                        ->group($this->basePath . 'author.php');
+                        ->group($this->basePath . 'user.php');
 
                     Route::prefix('public')
                         ->namespace('PublicControllers')

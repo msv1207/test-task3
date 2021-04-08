@@ -20,4 +20,9 @@ abstract class AuthAuthorController extends Controller
             return $next($request);
         });
     }
+
+    protected function getStorageBasePath(): string
+    {
+        return "authors/{$this->authAuthor->id}";
+    }
 }

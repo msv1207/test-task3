@@ -22,9 +22,10 @@ class AuthorResource extends JsonResource
         if (!$this->resource) return [];
 
         return [
-            'id'    => $this->id,
-            'name'  => $this->name,
-            'email' => $this->email,
+            'id'         => $this->id,
+            'name'       => $this->name,
+            'email'      => $this->email,
+            'avatar_url' => $this->avatar_url,
         ];
     }
 }

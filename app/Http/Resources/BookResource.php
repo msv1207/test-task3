@@ -27,6 +27,7 @@ class BookResource extends JsonResource
             'short_description' => $this->short_description,
             'description'       => $this->description,
             'created_at'        => $this->created_at,
+            'image_url'         => $this->image_url,
             'author'            => new AuthorResource($this->author),
         ];
 

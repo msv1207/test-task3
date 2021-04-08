@@ -13,6 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * @property int id
+ *
  * @property string name
  * @property string email
  */

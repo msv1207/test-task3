@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Interfaces\ImageAbleInterface;
+use App\Models\Traits\HasImage;
 use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -21,9 +23,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @property Author author
  */
-class Book extends Model
+class Book extends Model implements ImageAbleInterface
 {
-    use HasFactory;
+    use HasFactory, HasImage;
 
     protected $fillable = [
         'author_id',
@@ -32,6 +34,10 @@ class Book extends Model
         'description',
     ];
 
+    public function getImagesFolderName(): string
+    {
+        return 'books';
+    }
 
     /*
      * Relations

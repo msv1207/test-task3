@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Interfaces\AvatarAbleInterface;
 use App\Models\Interfaces\EmailConfirmableInterface;
 use App\Models\Interfaces\LoginAbleInterface;
 use App\Models\Interfaces\PasswordResetableInterface;
 use App\Models\Traits\EmailConfirmable;
+use App\Models\Traits\HasAvatar;
 use App\Models\Traits\LoginAble;
 use App\Models\Traits\PasswordResetable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,9 +22,15 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable implements
     LoginAbleInterface,
     PasswordResetableInterface,
-    EmailConfirmableInterface
+    EmailConfirmableInterface,
+    AvatarAbleInterface
 {
-    use HasFactory, Notifiable, LoginAble, PasswordResetable, EmailConfirmable;
+    use HasFactory,
+        Notifiable,
+        LoginAble,
+        PasswordResetable,
+        EmailConfirmable,
+        HasAvatar;
 
     public const AUTH_GUARD = 'users';
 

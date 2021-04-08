@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Interfaces\AvatarAbleInterface;
 use App\Models\Interfaces\EmailConfirmableInterface;
 use App\Models\Interfaces\LoginAbleInterface;
 use App\Models\Interfaces\PasswordResetableInterface;
 use App\Models\Traits\EmailConfirmable;
+use App\Models\Traits\HasAvatar;
 use App\Models\Traits\LoginAble;
 use App\Models\Traits\PasswordResetable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,15 +16,21 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * @property int id
+ *
  * @property string name
  * @property string email
  */
 class Author extends Authenticatable implements
     LoginAbleInterface,
     PasswordResetableInterface,
-    EmailConfirmableInterface
+    EmailConfirmableInterface,
+    AvatarAbleInterface
 {
-    use HasFactory, LoginAble, PasswordResetable, EmailConfirmable;
+    use HasFactory,
+        LoginAble,
+        PasswordResetable,
+        EmailConfirmable,
+        HasAvatar;
 
     public const AUTH_GUARD = 'authors';
 
