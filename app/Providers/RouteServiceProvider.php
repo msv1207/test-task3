@@ -56,6 +56,21 @@ class RouteServiceProvider extends ServiceProvider
                     Route::prefix('ping')
                         ->group($this->basePath . 'ping.php');
 
+                    Route::prefix('admin')
+                        ->namespace('Admin')
+                        ->group($this->basePath . 'admin.php');
+
+                    Route::prefix('author')
+                        ->namespace('Author')
+                        ->group($this->basePath . 'author.php');
+
+                    Route::prefix('user')
+                        ->namespace('User')
+                        ->group($this->basePath . 'author.php');
+
+                    Route::prefix('public')
+                        ->namespace('PublicControllers')
+                        ->group($this->basePath . 'public.php');
                 });
 
         });

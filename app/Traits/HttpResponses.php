@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use App\Http\Resources\LoginAbleResource;
+use App\Models\Interfaces\LoginAbleInterface;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 
@@ -12,14 +14,20 @@ trait HttpResponses
         return response($data);
     }
 
-    protected function successAuthResponse(string $token): Response
+    protected function successAuthResponse(string $token, LoginAbleInterface $loginAble): Response
     {
-        return response(['access_token' => $token]);
+        return response([
+            'access_token' => $token,
+            'user'         => new LoginAbleResource($loginAble),
+        ]);
     }
 
-    protected function successRegisteredResponse(string $token): Response
+    protected function successRegisteredResponse(string $token, LoginAbleInterface $loginAble): Response
     {
-        return response(['access_token' => $token], Response::HTTP_CREATED);
+        return response([
+            'access_token' => $token,
+            'user'         => new LoginAbleResource($loginAble),
+        ], Response::HTTP_CREATED);
     }
 
     protected function failedAuthResponse(): Response

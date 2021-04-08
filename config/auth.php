@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\Admin;
+use App\Models\Author;
+use App\Models\User;
+
 return [
 
     /*
@@ -14,8 +18,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard'     => User::AUTH_GUARD,
+        'passwords' => User::class,
     ],
 
     /*
@@ -36,15 +40,22 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
+        User::AUTH_GUARD => [
+            'driver'   => 'jwt',
+            'provider' => User::AUTH_GUARD,
+            'hash'     => false,
         ],
 
-        'api' => [
-            'driver' => 'jwt',
-            'provider' => 'users',
-            'hash' => false,
+        Author::AUTH_GUARD => [
+            'driver'   => 'jwt',
+            'provider' => Author::AUTH_GUARD,
+            'hash'     => false,
+        ],
+
+        Admin::AUTH_GUARD => [
+            'driver'   => 'jwt',
+            'provider' => Admin::AUTH_GUARD,
+            'hash'     => false,
         ],
     ],
 
@@ -66,15 +77,20 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        User::AUTH_GUARD => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model'  => User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        Author::AUTH_GUARD => [
+            'driver' => 'eloquent',
+            'model'  => Author::class,
+        ],
+
+        Admin::AUTH_GUARD => [
+            'driver' => 'eloquent',
+            'model'  => Admin::class,
+        ],
     ],
 
     /*
@@ -93,10 +109,24 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
+        User::class => [
+            'provider' => User::AUTH_GUARD,
+            'table'    => 'password_resets',
+            'expire'   => 60,
+            'throttle' => 60,
+        ],
+
+        Author::class => [
+            'provider' => Author::AUTH_GUARD,
+            'table'    => 'password_resets',
+            'expire'   => 60,
+            'throttle' => 60,
+        ],
+
+        Admin::class => [
+            'provider' => Admin::AUTH_GUARD,
+            'table'    => 'password_resets',
+            'expire'   => 60,
             'throttle' => 60,
         ],
     ],

@@ -24,6 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
+        $schedule->command('password_resets:expired')->everyMinute();
+        $schedule->command('email_confirms:expired')->hourly();
+
         if (config('env') !== 'production') {
             $schedule->command('telescope:prune --hours=48')->daily();
         }
