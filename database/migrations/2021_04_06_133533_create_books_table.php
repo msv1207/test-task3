@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Book;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -24,6 +25,7 @@ class CreateBooksTable extends Migration
             $table->string('title');
             $table->text('short_description');
             $table->text('description');
+            $table->string('status')->default(Book::STATUS_ACTIVE);
 
             $table->timestamps();
         });

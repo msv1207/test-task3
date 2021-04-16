@@ -13,4 +13,11 @@ class AuthorService
 
         return Author::query()->create($data);
     }
+
+    public function block(Author $author): Author
+    {
+        $author->update(['status' => Author::STATUS_BLOCKED]);
+
+        return $author;
+    }
 }

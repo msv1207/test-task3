@@ -10,7 +10,7 @@ Route::middleware('auth:' . Author::AUTH_GUARD)->group(function () {
 
     AvatarService::routes();
 
-    Route::middleware('book.owner')->group(function () {
+    Route::middleware(['author.active', 'book.owner'])->group(function () {
         Route::apiResource('books', 'BookController');
         Route::post('books/{book:id}/image', 'BookController@updateImage');
     });

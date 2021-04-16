@@ -11,7 +11,10 @@ class AuthorController extends Controller
 {
     public function index(): Response
     {
-        $authors = Author::query()->latest()->simplePaginate();
+        $authors = Author::query()
+            ->active()
+            ->latest()
+            ->simplePaginate();
 
         return $this->successResponse(new AuthorCollection($authors));
     }

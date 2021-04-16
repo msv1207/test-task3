@@ -10,12 +10,15 @@ use App\Models\Traits\EmailConfirmable;
 use App\Models\Traits\HasAvatar;
 use App\Models\Traits\LoginAble;
 use App\Models\Traits\PasswordResetable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * @property int id
+ *
+ * @property string status
  *
  * @property string name
  * @property string email
@@ -34,10 +37,14 @@ class Author extends Authenticatable implements
 
     public const AUTH_GUARD = 'authors';
 
+    public const STATUS_ACTIVE = 'active';
+    public const STATUS_BLOCKED = 'blocked';
+
     protected $fillable = [
         'name',
         'email',
         'password',
+        'status',
     ];
 
     protected $hidden = [
@@ -58,4 +65,13 @@ class Author extends Authenticatable implements
         return $this->hasMany(Book::class);
     }
 
+
+    /*
+     * Scopes
+     */
+
+    public function scopeActive(Builder $query): Builder
+    {
+        return $query->whereStatus(self::STATUS_ACTIVE);
+    }
 }
