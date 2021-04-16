@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://merehead.com" target="_blank">
-        <img src="https://merehead.com/dist/img/_logo.png?v=1" alt="Merehead">
+        <img src="https://merehead.com/dist/img/merehead_logo.png" alt="Merehead">
     </a>
 </p>
 
