@@ -7,7 +7,6 @@
   * run `make test` to test the project in dev mode
   * run `make phpreport` to make code report of dev project
   * run `make build` to run the project in production
-  * run `make update_web` to update the front size
 
 **Note:** you need to cd first to where your docker-compose.yml file lives.
 

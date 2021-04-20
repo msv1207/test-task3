@@ -74,13 +74,6 @@ build:
 	@echo "Build ready!"
 
 
-update_web:
-	docker-compose pull
-	docker-compose up -d
-
-	@echo "System updated"
-
-
 test:
 	@echo "Clear config cache:"
 	docker-compose exec php-fpm php artisan config:clear
