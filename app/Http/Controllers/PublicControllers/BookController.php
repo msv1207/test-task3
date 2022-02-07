@@ -34,8 +34,8 @@ class BookController extends Controller
             ->whereHas('author', fn(Builder $query) => $query->active())
             ->latest()
             ->simplePaginate();
-        return $this->successResponse(new BookCollection($books));
 
+        return $this->successResponse(new BookCollection($books));
     }
     public function sort(Request $request)
     {
@@ -49,7 +49,7 @@ class BookController extends Controller
             ->latest()
             ->orderBy('ganre', "$sort_by")
             ->simplePaginate();
-        return $this->successResponse(new BookCollection($books));
 
+        return $this->successResponse(new BookCollection($books));
     }
 }

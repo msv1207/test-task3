@@ -71,11 +71,10 @@ class BookController extends AuthAuthorController
     {
         $setGanre = $request->validate([
             'ganre'  => 'required|string|max:255'
-        ])['ganre'];
-        $book->setAttribute('ganre', $setGanre);
-        $book->save();
+        ]);
+        $this->bookService->update($book, $setGanre);
 
-        return $this->successResponse(($book));
+        return $this->successResponse($book);
     }
 
     public function destroy(Book $book): Response
