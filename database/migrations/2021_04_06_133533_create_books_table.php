@@ -22,6 +22,7 @@ class CreateBooksTable extends Migration
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
 
+            $table->string('ganre')->nullable();
             $table->string('title');
             $table->text('short_description');
             $table->text('description');

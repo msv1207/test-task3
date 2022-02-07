@@ -39,6 +39,7 @@ class Book extends Model implements ImageAbleInterface
         'short_description',
         'description',
         'status',
+        'ganre'
     ];
 
     public function getImagesFolderName(): string
