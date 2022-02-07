@@ -11,6 +11,7 @@ use App\Http\Resources\ImageResource;
 use App\Models\Book;
 use App\Services\BookService;
 use App\Services\ImageService;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class BookController extends AuthAuthorController
@@ -64,6 +65,16 @@ class BookController extends AuthAuthorController
             ->upload($book, $request->file('image'));
 
         return $this->successResponse(new ImageResource($updatedImage));
+    }
+
+    public function setGanre(Book $book, Request $request): Response
+    {
+        $setGanre = $request->validate([
+            'ganre'  => 'required|string|max:255'
+        ]);
+        $this->bookService->update($book, $setGanre);
+
+        return $this->successResponse($book);
     }
 
     public function destroy(Book $book): Response

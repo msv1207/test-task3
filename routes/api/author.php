@@ -13,6 +13,7 @@ Route::middleware('auth:' . Author::AUTH_GUARD)->group(function () {
     Route::middleware(['author.active', 'book.owner'])->group(function () {
         Route::apiResource('books', 'BookController');
         Route::post('books/{book:id}/image', 'BookController@updateImage');
+        Route::post('books/{book:id}/ganre', 'BookController@setGanre');
     });
 
 });
